@@ -1,4 +1,50 @@
-                ####### 3rd Order #######
+            ####### 2nd Order #######
+def second_order():
+    print("  Put elements: ")
+    try:
+        a = int(input("  ", ))
+        b = int(input("  ", ))
+        print('----')
+        c = int(input("  ", ))
+        d = int(input("  ", ))
+
+        A = [[a, b],
+             [c, d]]
+        A11 = d
+        A12 = c
+        A21 = b
+        A22 = a
+    except Exception:
+        print("Error")
+
+                ####### display #######
+    print()
+    print("  Determinant of 2nd order: ")
+    for matrix in A:
+        for elements in matrix:
+            print(elements, end=" ")
+        print()
+
+                ####### function #######
+    det = 0
+    def decomposition(det: int) ->int:
+        det = a*d - b*c
+        return det
+
+                ####### output #######
+    try:
+        method = input("  Press <Enter> to solve determinant: ").lower()
+    except Exception:
+        pass
+    if method == "":
+        print("Determinant of this matrix: ", decomposition(det))
+    else:
+        print("Not able to solve!")
+
+#while 1:
+#    print("\U0001F923", end="")
+
+        ####### 3rd order #######
 def third_order():
     print(" Put elements: ")
     try:
@@ -17,17 +63,6 @@ def third_order():
         A = [[a, b, c],
              [d, e, f],
              [g, h, i]]
-        a= A[0][0]
-        b= A[0][1]
-        c= A[0][2]
-
-        d = A[1][0]
-        e = A[1][1]
-        f = A[1][2]
-
-        g = A[2][0]
-        h = A[2][1]
-        i = A[2][2]
 
         A11= e*i - f*h
         A12= -(d*i - f*g)
@@ -149,9 +184,7 @@ def third_order():
     except Exception:
         print("Put 't', 'l' or 's'. Restart the program!")
         
-
                 ####### 4th Order #######
-
 def fourth_order():
     print(" Put elements: ")
     try:
@@ -179,23 +212,7 @@ def fourth_order():
              [e, f, g, h],
              [i, j, k, l],
              [m, n, o, p]]
-        a = A[0][0]
-        b = A[0][1]
-        c = A[0][2]
-        d = A[0][3]
-        e = A[1][0]
-        f = A[1][1]
-        g = A[1][2]
-        h = A[1][3]
-        i = A[2][0]
-        j = A[2][1]
-        k = A[2][2]
-        l = A[2][3]
-        m = A[3][0]
-        n = A[3][1]
-        o = A[3][2]
-        p = A[3][3]
-        
+
         A11= (f*k*p + h*j*o + n*g*l) - (n*k*h + f*o*l + p*g*j)
         A12= -((e*k*p + h*i*o + m*g*l) - (m*k*h + e*o*l + p*i*g))
         A13= (e*j*p + h*i*n + m*f*l) - (m*j*h + e*n*l + p*i*f)
@@ -212,40 +229,35 @@ def fourth_order():
         A42= (a*g*l + i*c*h + d*e*k) - (i*g*d + l*e*c + a*k*h)
         A43= -((a*f*l + d*e*j + i*b*h) - (i*f*d + a*h*j + l*e*b))
         A44= (a*f*k + c*e*j + i*b*g) - (i*f*c + a*g*j + k*b*e)
-    except Exception:
-         print("Put valid number!")
-         
+
                 ####### Determinant display #######
-    try:
         print()
         print("  Determinant of 4th order: ")
+       
         for matrix in A:
-            for elements in matrix:
+          for elements in matrix:
                  print(elements, end=" ")
-            print()
-        method = input("""  Press <Enter> to solve determinant """)
-    except Exception:
-        print()
-    
+          print()
+
                 ####### Functions (methods and steps) #######
-    det = 0
-    def decomposition(det: int) -> int:
-        det = e*A21 + f*A22 + g*A23 + h*A24
-        return det
-    def decopm_steps():
-        print(f"""    At first, let's choose a row. For example 2nd row!
-        Now, multiply each element of 4th row to its algebraic complement:
+        det = 0
+        def decomposition(det: int) -> int:
+            det = e*A21 + f*A22 + g*A23 + h*A24
+            return det
+        def decopm_steps():
+            print(f"""    At first, let's choose a row. For example 2nd row!
+            Now, multiply each element of 4th row to its algebraic complement:
         
-        1) {e} * {A21} = {e*A21}
-        2) {f} * {A22} = {f*A22}
-        3) {g} * {A23} = {g*A23}
-        4) {h} * {A24} = {h*A24}3
+            1) {e} * {A21} = {e*A21}
+            2) {f} * {A22} = {f*A22}
+            3) {g} * {A23} = {g*A23}
+            4) {h} * {A24} = {h*A24}3
 
-        Then, summarize them:
-        5) {e*A21} + {f*A22} + {g*A23} + {h*A24} = {decomposition(det)}""")
+            Then, summarize them:
+            5) {e*A21} + {f*A22} + {g*A23} + {h*A24} = {decomposition(det)}""")
 
-                ####### Output #######
-    try:
+                        ####### Output #######
+        method = input("""  Press <Enter> to solve determinant """)
         if method == "":
             print("    Determinant:", decomposition(det))
             print()
@@ -258,16 +270,18 @@ def fourth_order():
         else:
             pass
     except Exception:
-        print("Press just <Enter> please")
-        
+         print("Put valid number!")
+    
                 ####### Order #######
 try:
-    det_order = int(input(" Put determinant order (put only 3 or 4 please): "))
+    det_order = int(input(" Put determinant order (put only 2 or 3 or 4 please): "))
     if det_order == 3:
         third_order()
     elif det_order == 4:
         fourth_order()
+    elif det_order == 2:
+        second_order()
     else:
-        print("Able to solve only 3rd and 4th determinant order!")
+        print("Able to solve only 2nd, 3rd or 4th determinant order!")
 except Exception:
     print("Put only numbers!")
